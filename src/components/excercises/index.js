@@ -5,7 +5,7 @@ import { ListItem, ListItemText } from 'material-ui/List';
 const styles = {
   Paper: {
     padding: 20,
-    marginToop: 10,
+    marginTop: 10,
     marginBottom: 10,
     height: 500,
     overflow: 'auto',
@@ -22,12 +22,13 @@ export default ({
     description = 'Please select excercise from the list on the left',
   },
 }) =>
-  (<Grid container>
-    <Grid item sm>
-      <Paper style={styles.Paper}>
-        {excercises.map(([group, excercises], id) =>
+  (
+    <Grid container>
+      <Grid item sm>
+        <Paper style={styles.Paper}>
+          {excercises.map(([group, excercises], id) =>
           (!category || category === group ?
-          (<Fragment>
+          (<Fragment key={group}>
             <Typography
               key={id}
               variant="headline"
@@ -37,30 +38,33 @@ export default ({
             </Typography>
 
             <List component="ul">
-              {excercises.map(({ title, id }) =>
+              {excercises.map(({ id, title }) =>
                 (<ListItem key={id} button>
                   <ListItemText
                     onClick={() => onSelect(id)}
                     primary={title}
                   />
-                 </ListItem>))}
+                </ListItem>))}
             </List>
-           </Fragment>) :
+          </Fragment>) :
            null))}
-      </Paper>
-    </Grid>
-    <Grid item sm>
-      <Paper style={styles.Paper} >
-        <Typography
-          variant="headline"
-        />
-        {title}
-        <Typography
-          variant="subheading"
-          style={{ marginTop: 20 }}
-        />
-        {description}
-      </Paper>
-    </Grid>
-  </Grid>);
+        </Paper>
+      </Grid>
+
+      <Grid item sm>
+        <Paper style={styles.Paper} >
+          <Typography
+            variant="display1"
+          >
+            {title}
+          </Typography>
+          <Typography
+            variant="subheading"
+            style={{ marginTop: 20 }}
+          >
+            {description}
+          </Typography>
+        </Paper>
+      </Grid>
+    </Grid>);
 

@@ -4,7 +4,7 @@ import { AppBar, Toolbar, Typography } from 'material-ui';
 // import IconButton from 'material-ui/IconButton';
 // import MenuIcon from '@material-ui/icons/Menu';
 
-const Header = () => (
+export default props => (
 
   <AppBar position="static">
     <Toolbar>
@@ -23,4 +23,3 @@ const Header = () => (
 
 );
 
-export default Header;
