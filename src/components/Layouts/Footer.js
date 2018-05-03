@@ -12,18 +12,19 @@ export default ({ muscles, onSelect, category }) => {
     onSelect(index === 0 ? '' : muscles[index - 1]);
   };
 
-  return (<Paper>
-    <Tabs
-      onChange={onIndexSelect}
-      value={index}
-      indicatorColor="primary"
-      textColor="primary"
-      centered
-    >
-      <Tab label="All" />
-      {muscles.map((group, id) =>
-        <Tab key={id} label={group} />)}
-    </Tabs>
-  </Paper>);
+  return (
+    <Paper>
+      <Tabs
+        onChange={onIndexSelect}
+        value={index}
+        indicatorColor="primary"
+        textColor="primary"
+        centered
+      >
+        <Tab label="All" />
+        {muscles.map(group =>
+          <Tab key={group} label={group} />)}
+      </Tabs>
+    </Paper>);
 };
 
