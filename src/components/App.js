@@ -40,7 +40,7 @@ class App extends Component {
     console.log('>>>>>>>', this.state.excercise.descriptopn)
     return (
       <Fragment>
-        <Header />
+        <Header muscles={muscles} onExcerciseCreate={this.handleExcerciseCreate} />
         <Excercises excercise={excercise} onSelect={this.handleExcerciseSelected} category={category} excercises={excercises} />
         <Footer category={category} muscles = {muscles} onSelect={this.handleCategorySelected}/>
       </Fragment>
