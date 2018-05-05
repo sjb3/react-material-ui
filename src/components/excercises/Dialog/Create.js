@@ -45,10 +45,21 @@ export default withStyles(styles)(class extends Component {
   };
 
   handleSubmit = () => {
-    // TODO: validation
-    const { excercise } = this.state
+    // TODO: validate
+    const {excercise} = this.state
 
-    this.props.onCreate(excercise)
+    this.props.onCreate({
+      ...excercise,
+      id: excercise.title.toLocaleLowerCase().replace(/ /g, '- ')
+    })
+
+    this.setState({
+      open: false,
+      excercise: {
+        title: '',
+        description: '',
+        muscles: ''
+      }
     })
   }
 
@@ -93,11 +104,11 @@ export default withStyles(styles)(class extends Component {
             className={classes.FormControl}
           >
             {categories.map(category => {
-            <MenuItem value={category}>{category}</MenuItem>
+            <MenuItem key={category} value={category}>{category}</MenuItem>
             })}
           </Select>
-          <br />
         </FormControl>
+        <br />
           <TextField
             multiline
             rows='4'
