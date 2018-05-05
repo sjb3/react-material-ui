@@ -9,6 +9,7 @@ export default ({ muscles, onExcerciseCreate }) => (
       <Typography variant="headline" color="inherit" style={{ flex: 1 }}>
         Excercises
       </Typography>
+
       <CreateDialog
         muscles={muscles}
         onCreate={onExcerciseCreate}
