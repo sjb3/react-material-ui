@@ -17,14 +17,14 @@ const styles = {
 export default ({
   muscles,
   editMode,
-  excercises,
+  exercises,
   category,
   onSelect,
-  excercise,
-  excercise: {
+  exercise,
+  exercise: {
     id,
     title = 'Welcome',
-    description = 'Please select excercise from the list on the left',
+    description = 'Please select exercise from the list on the left',
   },
   onDelete,
   onEdit,
@@ -34,7 +34,7 @@ export default ({
     <Grid container>
       <Grid item sm>
         <Paper style={styles.Paper}>
-          {excercises.map(([group, excercises], id) =>
+          {exercises.map(([group, exercises], id) =>
           (!category || category === group ?
           (<Fragment key={group}>
             <Typography
@@ -46,7 +46,7 @@ export default ({
             </Typography>
 
             <List component="ul">
-              {excercises.map(({ id, title }) =>
+              {exercises.map(({ id, title }) =>
                 (<ListItem key={id} button>
                   <ListItemText
                     onClick={() => onSelect(id)}
@@ -62,9 +62,9 @@ export default ({
                     </IconButton>
                   </ListItemSecondaryAction>
 
-                 </ListItem>))}
+                </ListItem>))}
             </List>
-           </Fragment>) :
+          </Fragment>) :
            null))}
         </Paper>
       </Grid>
@@ -73,7 +73,7 @@ export default ({
         <Paper style={styles.Paper} >
           { editMode ?
             <Form
-              excercise={excercise}
+              exercise={exercise}
               muscles={muscles}
               onSubmit={onEdit}
             /> :

@@ -12,7 +12,7 @@ import { Add } from 'material-ui-icons'; // need to import separately // docs no
 export default class extends Component {
   state = {
     open: false,
-    excercise: {
+    exercise: {
       title: '',
       description: '',
       muscles: '',
@@ -25,10 +25,14 @@ export default class extends Component {
      })
   }
 
+  handleFormSubmit = (exercise) => {
+    this.handleToggle()
+    this.props.onCreate(exercise)
+  }
 
   render() {
     const {open} = this.state,
-          {muscles, onCreate} = this.props
+          {muscles} = this.props
 
     return (
       <Fragment>
@@ -41,11 +45,11 @@ export default class extends Component {
           onClose={this.handleToggle}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Create  a New Excercise</DialogTitle>
+          <DialogTitle>Create  a New Exercise</DialogTitle>
           <DialogContent>
             <DialogContentText>
            Please fill out the form below.
-            <Form muscles={muscles} onSubmit={onCreate} />
+            <Form muscles={muscles} onSubmit={this.handleFormSubmit} />
             </DialogContentText>
 
           </DialogContent>
