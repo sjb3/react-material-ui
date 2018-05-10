@@ -6,9 +6,13 @@ import { FormControl } from 'material-ui/Form';
 import { withStyles } from 'material-ui/styles';
 import { TextField, Select, Button } from 'material-ui';
 
+// OK for now, but if you wanna customize the size of the Dialog, work on it later
 const styles = theme => ({
   FormControl: {
     width: 300,
+  },
+  xsFormControl: {
+    width: 250,
   },
 });
 

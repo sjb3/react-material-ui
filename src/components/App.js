@@ -1,7 +1,10 @@
 import React, { Component, Fragment } from 'react';
+import CssBaseline from 'material-ui/CssBaseline'; // consistent layout for all of the pages
+
 import { Header, Footer } from './Layouts';
 import Exercises from './exercises';
 import { muscles, exercises } from '../store.js';
+
 // muscles are more static but exercises; hence state which is changeable
 
 class App extends Component {
@@ -80,6 +83,7 @@ class App extends Component {
 
     return (
       <Fragment>
+        <CssBaseline />
         <Header
           muscles={muscles}
           onExerciseCreate={this.handleExerciseCreate} />

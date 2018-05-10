@@ -3,18 +3,19 @@ import { Grid, Paper, Typography, List, IconButton } from 'material-ui';
 import { ListItem, ListItemText, ListItemSecondaryAction } from 'material-ui/List';
 import { Edit, Delete } from 'material-ui-icons';
 import Form from './Form';
+import { withStyles } from 'material-ui/styles';
 
-const styles = {
+const styles = theme => ({
   Paper: {
     padding: 20,
-    marginTop: 10,
-    marginBottom: 10,
+    marginTop: 5,
     height: 500,
     overflow: 'auto',
   },
-};
+});
 
-export default ({
+export default withStyles(styles)(({
+  classes,
   muscles,
   editMode,
   exercises,
@@ -32,8 +33,8 @@ export default ({
 }) =>
   (
     <Grid container>
-      <Grid item sm>
-        <Paper style={styles.Paper}>
+      <Grid item xs={12} sm={6}>
+        <Paper className={classes.Paper}>
           {exercises.map(([group, exercises], id) =>
           (!category || category === group ?
           (<Fragment key={group}>
@@ -62,15 +63,15 @@ export default ({
                     </IconButton>
                   </ListItemSecondaryAction>
 
-                </ListItem>))}
+                 </ListItem>))}
             </List>
-          </Fragment>) :
+           </Fragment>) :
            null))}
         </Paper>
       </Grid>
 
-      <Grid item sm>
-        <Paper style={styles.Paper} >
+      <Grid item xs={12} sm={6}>
+        <Paper className={classes.Paper} >
           { editMode ?
             <Form
               exercise={exercise}
@@ -94,5 +95,4 @@ export default ({
 
         </Paper>
       </Grid>
-    </Grid>);
-
+    </Grid>));
